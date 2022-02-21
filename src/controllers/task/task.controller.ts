@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
-import { ITask } from "../interfaces/task.interface";
-import { createNewTaskService } from "../services/taks/createTaks";
+import { ITask } from "../../interfaces/task.interface";
+import { createNewTaskService } from "../../services/taks/createTaks";
 
 const createTaksController = async (
   req: Request<{}, {}, ITask>,
