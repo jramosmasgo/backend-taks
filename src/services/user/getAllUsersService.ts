@@ -7,7 +7,7 @@ const getAllUserService = async (): Promise<IUser[]> => {
   try {
     return await findAllResources(UserModel);
   } catch (error: any) {
-    throw new ApplicationError(500, error.message, "Service");
+    throw new ApplicationError(500, error.message, error.errorType);
   }
 };
 
