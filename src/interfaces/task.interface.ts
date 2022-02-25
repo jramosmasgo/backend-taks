@@ -6,5 +6,6 @@ export interface ITask extends Base {
   body: string;
   url_image: string;
   completed: boolean;
+  deadline: Date;
   user: Types.ObjectId;
 }

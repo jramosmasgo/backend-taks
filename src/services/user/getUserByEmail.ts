@@ -1,7 +1,3 @@
-import findResourceByField from "../factory/findResourceByField";
-
-const getUserByEmail = async() => {
-    
-}
+const getUserByEmail = async () => {};
 
 export default getUserByEmail;

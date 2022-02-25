@@ -1,7 +1,7 @@
 import { model } from "mongoose";
-import { TaskScheme } from "../schemas/task.scheme";
+import TaskScheme from "../schemas/task.scheme";
 import { ITask } from "../interfaces/task.interface";
 
-const TaksModel = model<ITask>("Task", TaskScheme);
+const TaskModel = model<ITask>("Task", TaskScheme);
 
-export default TaksModel;
+export default TaskModel;
