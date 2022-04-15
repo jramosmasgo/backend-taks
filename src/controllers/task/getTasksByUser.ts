@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
+import ResponseApi from "../../core/apiResponse";
 import ApplicationError from "../../interfaces/applicationError";
-import Result from "../../interfaces/response.interface";
 import { ITask } from "../../interfaces/task.interface";
 import getTaskByUserService from "../../services/taks/getTasksByUserService";
 
@@ -10,8 +10,11 @@ const getTasksByUserController = async (
   next: NextFunction
 ) => {
   try {
-    const response = await getTaskByUserService(req.params.userId);
-    res.status(200).json(new Result<ITask>(response));
+    const { userID } = req.headers;
+    const response = await getTaskByUserService(userID as string);
+    new ResponseApi<ITask[]>({ data: response, message: "Tasks" }).sendSuccess(
+      res
+    );
   } catch (error: any) {
     next(
       new ApplicationError(error.statusCode, error.mesagge, error.errorType)

@@ -1,8 +1,8 @@
 import dotenv from "dotenv";
+dotenv.config();
+
 import application from "./app";
 import createDbConnection from "./config/database";
-
-dotenv.config();
 
 createDbConnection(`${process.env.CONNECTION_DATABASE}`);
 

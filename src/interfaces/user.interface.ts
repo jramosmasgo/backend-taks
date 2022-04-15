@@ -8,3 +8,13 @@ export interface IUser extends Base {
   password: string;
   tasks: ITask[];
 }
+
+export type IUserOutput = Omit<
+  IUser,
+  "password" | "tasks" | "created_at" | "modified_at" | "state"
+>;
+export type IUserLogin = Omit<IUser, "name" | "profile_image" | "tasks">;
+
+export interface IUserLoginResponse extends IUserOutput {
+  token?: string;
+}

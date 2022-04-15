@@ -1,18 +1,17 @@
 import { Response, Request, NextFunction } from "express";
-import Result from "../interfaces/response.interface";
+import ResponseApi from "../core/apiResponse";
 
 const ErrorMiddleware = (
   err: any,
-  req: Request,
+  _req: Request,
   res: Response,
-  next: NextFunction // eslint-disable-line
+  _next: NextFunction
 ) => {
-  const responseError = new Result<null>(
-    null,
-    { ...err, message: err.message },
-    false
-  );
-  res.status(err.statusCode ? err.statusCode : 500).json(responseError);
+  new ResponseApi<null>({
+    error: err,
+    data: null,
+    message: err.message,
+  }).sendError(res, err.statusCode ?? 500);
 };
 
 export default ErrorMiddleware;
